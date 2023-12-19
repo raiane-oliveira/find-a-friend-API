@@ -15,3 +15,8 @@
 - [ ] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp
 - [ ] Todos os filtros, além da cidade, são opcionais
 - [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
+
+# Requisitos não funcionais
+
+- [ ] A idade do pet armazenada no DB deve ser: 
+  0 até 1 = filhote; 1 à 6 = adulto jovem; 7 à 10 = adulto maduro; acima de 10 = Sênior 
