@@ -22,9 +22,9 @@ export class RegisterUseCase {
     address,
     whatsapp,
   }: RegisterUseCaseRequest) {
-    const userWithSameEmail = await this.orgsRepository.findByEmail(email)
+    const orgWithSameEmail = await this.orgsRepository.findByEmail(email)
 
-    if (userWithSameEmail) {
+    if (orgWithSameEmail) {
       throw new OrgAlreadyExistsError()
     }
 
