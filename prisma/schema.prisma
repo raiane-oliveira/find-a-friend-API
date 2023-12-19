@@ -15,9 +15,9 @@ model Organization {
   name          String
   email         String   @unique
   password_hash String
-  cep           String
+  cep           Int
   address       String
-  whatsapp      String
+  whatsapp      Int
   created_at    DateTime @default(now())
   Pet           Pet[]
 
@@ -32,16 +32,22 @@ enum Size {
   XL
 }
 
+enum Level {
+  LOW
+  MEDIUM
+  HIGH
+}
+
 model Pet {
-  id          String   @id @default(uuid())
-  name        String
-  about       String
-  age         Int
-  size        Size
-  energy      Int
-  independent String
-  environment String
-  created_at  DateTime @default(now())
+  id                String   @id @default(uuid())
+  name              String
+  about             String
+  age               Int
+  size              Size
+  energy            Int
+  independent_level Level
+  environment       Level
+  created_at        DateTime @default(now())
 
   org_id       String
   organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
@@ -53,8 +59,9 @@ model Pet {
 }
 
 model Image {
-  id  Int    @id @default(autoincrement())
+  id  Int     @id @default(autoincrement())
   url String
+  alt String?
 
   pet_id String
   pet    Pet    @relation(fields: [pet_id], references: [id], onDelete: Cascade)
