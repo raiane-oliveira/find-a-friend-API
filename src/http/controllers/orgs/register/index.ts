@@ -8,7 +8,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string(),
     email: z.string(),
-    password: z.string(),
+    password: z.string().min(6),
     address: z.string(),
     cep: z.coerce.number(),
     whatsapp: z.number(),
