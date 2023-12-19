@@ -1,4 +1,4 @@
-import { ImagesRepository } from '@/repositories/images-repository'
+import { ImagesRepository } from '@/repositories/contracts/images-repository'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 
 interface UploadImageUseCaseRequest {

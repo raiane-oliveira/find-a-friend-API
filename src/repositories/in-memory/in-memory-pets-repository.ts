@@ -1,5 +1,5 @@
 import { Pet } from '@prisma/client'
-import { PetCreateInput, PetsRepository } from '../pets-repository'
+import { PetCreateInput, PetsRepository } from '../contracts/pets-repository'
 import { randomUUID } from 'crypto'
 
 export class InMemoryPetsRepository implements PetsRepository {

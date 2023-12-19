@@ -5,5 +5,5 @@ export interface ImageCreateInput extends Omit<Prisma.ImageCreateInput, 'pet'> {
 }
 
 export interface ImagesRepository {
-  create(data: ImageCreateArgs): Promise<Image>
+  create(data: ImageCreateInput): Promise<Image>
 }

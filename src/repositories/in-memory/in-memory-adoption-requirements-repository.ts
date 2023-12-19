@@ -2,7 +2,7 @@ import { AdoptionRequirement } from '@prisma/client'
 import {
   AdoptionRequirementsRepository,
   AdoptionRequirementCreateInput,
-} from '../adoption-requirements-repository'
+} from '../contracts/adoption-requirements-repository'
 import { randomInt, randomUUID } from 'crypto'
 
 export class InMemoryAdoptionRequirementsRepository

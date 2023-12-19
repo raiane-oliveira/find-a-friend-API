@@ -1,4 +1,4 @@
-import { AdoptionRequirementsRepository } from '@/repositories/adoption-requirements-repository'
+import { AdoptionRequirementsRepository } from '@/repositories/contracts/adoption-requirements-repository'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 
 interface CreateAdoptionRequirementsUseCaseRequest {

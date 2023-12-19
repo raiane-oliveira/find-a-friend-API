@@ -1,5 +1,5 @@
 import { Organization, Prisma } from '@prisma/client'
-import { OrgsRepository } from '../orgs-repository'
+import { OrgsRepository } from '../contracts/orgs-repository'
 import { randomUUID } from 'crypto'
 
 export class InMemoryOrgsRepository implements OrgsRepository {

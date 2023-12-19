@@ -1,5 +1,8 @@
 import { Image } from '@prisma/client'
-import { ImageCreateInput, ImagesRepository } from '../images-repository'
+import {
+  ImageCreateInput,
+  ImagesRepository,
+} from '../contracts/images-repository'
 import { randomInt } from 'crypto'
 
 export class InMemoryImagesRepository implements ImagesRepository {

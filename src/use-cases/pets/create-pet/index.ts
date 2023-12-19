@@ -1,4 +1,4 @@
-import { PetsRepository } from '@/repositories/pets-repository'
+import { PetsRepository } from '@/repositories/contracts/pets-repository'
 import { InvalidPetEnergyError } from '@/use-cases/errors/invalid-pet-energy-error'
 import { Level, Size } from '@prisma/client'
 
