@@ -17,6 +17,8 @@ model Organization {
   password_hash String
   cep           Int
   address       String
+  city          String
+  state         String
   whatsapp      Int
   created_at    DateTime @default(now())
   Pet           Pet[]
