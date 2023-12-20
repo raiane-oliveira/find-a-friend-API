@@ -12,9 +12,11 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     address: z.string(),
     cep: z.coerce.number(),
     whatsapp: z.number(),
+    city: z.string(),
+    state: z.string(),
   })
 
-  const { name, email, password, address, cep, whatsapp } =
+  const { name, email, password, address, cep, whatsapp, city, state } =
     registerBodySchema.parse(request.body)
 
   try {
@@ -28,6 +30,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       address,
       cep,
       whatsapp,
+      city,
+      state,
     })
   } catch (err) {
     if (err instanceof OrgAlreadyExistsError) {
