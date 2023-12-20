@@ -1,5 +1,9 @@
 import { Pet } from '@prisma/client'
-import { PetCreateInput, PetsRepository } from '../contracts/pets-repository'
+import {
+  Filters,
+  PetCreateInput,
+  PetsRepository,
+} from '../contracts/pets-repository'
 import { randomUUID } from 'crypto'
 
 export class InMemoryPetsRepository implements PetsRepository {
@@ -38,10 +42,27 @@ export class InMemoryPetsRepository implements PetsRepository {
     return pet
   }
 
-  async findManyByCity(city: string) {
-    const pets = this.items.filter(
-      (item) => item.city.toLowerCase().trim() === city.toLowerCase().trim(),
-    )
+  async findManyByFilters({ city, age, energy, independence, size }: Filters) {
+    const pets = this.items.filter((item) => {
+      const filterByCity =
+        item.city.toLowerCase().trim() === city.toLowerCase().trim() &&
+        !item.adopted_at
+
+      const filterByAge = age ? item.age === age : true
+      const filterByEnergy = energy ? item.energy === energy : true
+      const filterBySize = size ? item.size === size : true
+      const filterByIndependence = independence
+        ? item.independent_level === independence
+        : true
+
+      return (
+        filterByCity &&
+        filterByAge &&
+        filterByEnergy &&
+        filterBySize &&
+        filterByIndependence
+      )
+    })
 
     if (pets.length === 0) {
       return null
