@@ -15,11 +15,32 @@ export class InMemoryPetsRepository implements PetsRepository {
       environment: data.environment,
       independent_level: data.independent_level,
       size: data.size,
-      org_id: data.org_id ? data.org_id : randomUUID(),
+      org_id: data.org_id ?? randomUUID(),
       created_at: new Date(),
+      adopted_at: data.adopted_at ? new Date(data.adopted_at) : null,
     }
 
     this.items.push(pet)
+    return pet
+  }
+
+  async save(pet: Pet) {
+    const petIndex = this.items.findIndex((item) => item.id === pet.id)
+
+    if (petIndex >= 0) {
+      this.items[petIndex] = pet
+    }
+
+    return pet
+  }
+
+  async findById(id: string) {
+    const pet = this.items.find((item) => item.id === id)
+
+    if (!pet) {
+      return null
+    }
+
     return pet
   }
 }

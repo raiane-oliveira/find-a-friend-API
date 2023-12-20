@@ -16,4 +16,6 @@ export interface PetCreateInput
 
 export interface PetsRepository {
   create(data: PetCreateInput): Promise<Pet>
+  save(pet: Pet): Promise<PetCreateInput>
+  findById(id: string): Promise<Pet | null>
 }
