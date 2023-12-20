@@ -9,6 +9,8 @@ interface RegisterUseCaseRequest {
   address: string
   cep: number
   whatsapp: number
+  city: string
+  state: string
 }
 
 export class RegisterUseCase {
@@ -21,6 +23,8 @@ export class RegisterUseCase {
     cep,
     address,
     whatsapp,
+    city,
+    state,
   }: RegisterUseCaseRequest) {
     const orgWithSameEmail = await this.orgsRepository.findByEmail(email)
 
@@ -37,6 +41,8 @@ export class RegisterUseCase {
       password_hash,
       email,
       whatsapp,
+      city,
+      state,
     })
 
     return {

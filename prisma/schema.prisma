@@ -41,7 +41,7 @@ enum Level {
 }
 
 model Pet {
-  id                String   @id @default(uuid())
+  id                String    @id @default(uuid())
   name              String
   about             String
   age               Int
@@ -49,7 +49,8 @@ model Pet {
   energy            Int
   independent_level Level
   environment       Level
-  created_at        DateTime @default(now())
+  created_at        DateTime  @default(now())
+  adopted_at        DateTime?
 
   org_id       String
   organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)

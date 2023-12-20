@@ -21,6 +21,8 @@ describe('Register Use Case', () => {
       address: 'Rua do Limoeiro, 453, PB - Campina Grande',
       cep: 123456,
       whatsapp: 21984342375,
+      city: 'Teste',
+      state: 'Case',
     })
 
     expect(org.name).toEqual('John Doe')
@@ -34,6 +36,8 @@ describe('Register Use Case', () => {
       address: 'Rua do Limoeiro, 453, PB - Campina Grande',
       cep: 123456,
       whatsapp: 21984342375,
+      city: 'Teste',
+      state: 'Case',
     })
 
     const isPasswordCorrectlyHashed = await compare('123456', org.password_hash)
@@ -48,6 +52,8 @@ describe('Register Use Case', () => {
       address: 'Rua do Limoeiro, 453, PB - Campina Grande',
       cep: 123456,
       whatsapp: 21984342375,
+      city: 'Teste',
+      state: 'Case',
     })
 
     await expect(() =>
@@ -58,6 +64,8 @@ describe('Register Use Case', () => {
         address: 'Rua do Limoeiro, 453, PB - Campina Grande',
         cep: 123456,
         whatsapp: 21984342375,
+        city: 'Teste',
+        state: 'Case',
       }),
     ).rejects.toBeInstanceOf(OrgAlreadyExistsError)
   })
