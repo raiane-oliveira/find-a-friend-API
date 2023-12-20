@@ -18,4 +18,9 @@ export class InMemoryImagesRepository implements ImagesRepository {
 
     return image
   }
+
+  async findManyByPetId(petId: string) {
+    const images = this.items.filter((item) => item.pet_id === petId)
+    return images
+  }
 }

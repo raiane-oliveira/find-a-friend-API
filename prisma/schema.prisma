@@ -46,6 +46,8 @@ model Pet {
   about             String
   age               Int
   size              Size
+  city              String
+  state             String
   energy            Int
   independent_level Level
   environment       Level

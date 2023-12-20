@@ -8,4 +8,5 @@ export interface AdoptionRequirementCreateInput {
 
 export interface AdoptionRequirementsRepository {
   create(data: AdoptionRequirementCreateInput): Promise<AdoptionRequirement>
+  findManyByPetId(petId: string): Promise<AdoptionRequirement[]>
 }

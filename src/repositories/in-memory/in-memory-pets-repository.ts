@@ -7,14 +7,8 @@ export class InMemoryPetsRepository implements PetsRepository {
 
   async create(data: PetCreateInput) {
     const pet: Pet = {
+      ...data,
       id: data.id ? data.id : randomUUID(),
-      name: data.name,
-      about: data.about,
-      age: data.age,
-      energy: data.energy,
-      environment: data.environment,
-      independent_level: data.independent_level,
-      size: data.size,
       org_id: data.org_id ?? randomUUID(),
       created_at: new Date(),
       adopted_at: data.adopted_at ? new Date(data.adopted_at) : null,
@@ -42,5 +36,17 @@ export class InMemoryPetsRepository implements PetsRepository {
     }
 
     return pet
+  }
+
+  async findManyByCity(city: string) {
+    const pets = this.items.filter(
+      (item) => item.city.toLowerCase().trim() === city.toLowerCase().trim(),
+    )
+
+    if (pets.length === 0) {
+      return null
+    }
+
+    return pets
   }
 }

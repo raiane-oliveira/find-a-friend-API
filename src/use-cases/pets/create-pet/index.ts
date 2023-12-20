@@ -11,6 +11,8 @@ interface CreatePetUseCaseRequest {
   independentLevel: Level
   environment: Level
   orgId: string
+  city: string
+  state: string
 }
 
 export class CreatePetUseCase {
@@ -25,6 +27,8 @@ export class CreatePetUseCase {
     environment,
     independentLevel,
     orgId,
+    city,
+    state,
   }: CreatePetUseCaseRequest) {
     if (energy > 5) {
       throw new InvalidPetEnergyError()
@@ -37,6 +41,8 @@ export class CreatePetUseCase {
       size,
       energy,
       environment,
+      city,
+      state,
       independent_level: independentLevel,
       org_id: orgId,
     })

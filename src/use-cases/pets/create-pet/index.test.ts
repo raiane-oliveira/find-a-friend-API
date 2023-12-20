@@ -22,6 +22,8 @@ describe('Create Pet Use Case', () => {
       independentLevel: 'MEDIUM',
       size: 'XS',
       orgId: 'org-01',
+      city: 'Lorem',
+      state: 'Ipsum',
     })
 
     expect(pet.name).toEqual('Alfredo')
@@ -38,6 +40,8 @@ describe('Create Pet Use Case', () => {
         independentLevel: 'MEDIUM',
         size: 'XS',
         orgId: 'org-01',
+        city: 'Lorem',
+        state: 'Ipsum',
       }),
     ).rejects.toBeInstanceOf(InvalidPetEnergyError)
   })

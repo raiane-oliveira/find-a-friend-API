@@ -20,4 +20,11 @@ export class InMemoryAdoptionRequirementsRepository
     this.items.push(adoptionRequirements)
     return adoptionRequirements
   }
+
+  async findManyByPetId(petId: string) {
+    const adoptionRequirements = this.items.filter(
+      (item) => item.pet_id === petId,
+    )
+    return adoptionRequirements
+  }
 }
