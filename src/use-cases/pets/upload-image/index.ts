@@ -11,7 +11,7 @@ export class UploadImageUseCase {
   constructor(private imagesRepository: ImagesRepository) {}
 
   async execute({ url, alt, petId }: UploadImageUseCaseRequest) {
-    if (!url) {
+    if (!url || !petId) {
       throw new ResourceNotFoundError()
     }
 

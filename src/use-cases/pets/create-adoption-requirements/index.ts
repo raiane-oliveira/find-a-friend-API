@@ -15,7 +15,7 @@ export class CreateAdoptionRequirementsUseCase {
     requirement,
     petId,
   }: CreateAdoptionRequirementsUseCaseRequest) {
-    if (!requirement) {
+    if (!requirement || !petId) {
       throw new ResourceNotFoundError()
     }
 
