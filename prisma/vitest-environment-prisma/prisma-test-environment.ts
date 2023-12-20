@@ -1,6 +1,7 @@
-import { execSync } from 'node:child_process'
-import { randomUUID } from 'crypto'
 import 'dotenv/config'
+
+import { execSync } from 'node:child_process'
+import { randomUUID } from 'node:crypto'
 
 import { Environment } from 'vitest'
 import { PrismaClient } from '@prisma/client'
@@ -20,12 +21,12 @@ function generateDatabaseUrl(schema: string) {
 
 export default <Environment>{
   name: 'prisma',
-  transformMode: 'ssr',
 
   async setup() {
     const schema = randomUUID()
 
-    process.env.DATABASE_URL = generateDatabaseUrl(schema)
+    const databaseUrl = generateDatabaseUrl(schema)
+    process.env.DATABASE_URL = databaseUrl
 
     execSync('npx prisma migrate deploy')
 
@@ -38,4 +39,5 @@ export default <Environment>{
       },
     }
   },
+  transformMode: 'ssr',
 }
