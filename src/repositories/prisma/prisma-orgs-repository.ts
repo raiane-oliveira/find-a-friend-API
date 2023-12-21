@@ -3,8 +3,8 @@ import { Prisma } from '@prisma/client'
 import { OrgsRepository } from '../contracts/orgs-repository'
 
 export class PrismaOrgsRepository implements OrgsRepository {
-  async create(data: Prisma.OrganizationCreateInput) {
-    const org = await prisma.organization.create({
+  async create(data: Prisma.OrgCreateInput) {
+    const org = await prisma.org.create({
       data,
     })
 
@@ -12,7 +12,7 @@ export class PrismaOrgsRepository implements OrgsRepository {
   }
 
   async findByEmail(email: string) {
-    const org = await prisma.organization.findUnique({
+    const org = await prisma.org.findUnique({
       where: {
         email,
       },

@@ -1,6 +1,6 @@
 import { OrgsRepository } from '@/repositories/contracts/orgs-repository'
 import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { Organization } from '@prisma/client'
+import { Org } from '@prisma/client'
 import { compare } from 'bcryptjs'
 
 interface AuthenticateUseCaseRequest {
@@ -9,7 +9,7 @@ interface AuthenticateUseCaseRequest {
 }
 
 interface AuthenticateUseCaseResponse {
-  org: Organization
+  org: Org
 }
 
 export class AuthenticateUseCase {

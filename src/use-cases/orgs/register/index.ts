@@ -7,8 +7,8 @@ interface RegisterUseCaseRequest {
   email: string
   password: string
   address: string
-  cep: number
-  whatsapp: number
+  cep: string
+  whatsapp: string
   city: string
   state: string
 }
@@ -33,6 +33,10 @@ export class RegisterUseCase {
     }
 
     const password_hash = await hash(password, 6)
+    const whatsappWithoutSpecialCharacters = whatsapp.replace(
+      /(-|\(|\)| )/g,
+      '',
+    )
 
     const org = await this.orgsRepository.create({
       name,
@@ -40,7 +44,7 @@ export class RegisterUseCase {
       cep,
       password_hash,
       email,
-      whatsapp,
+      whatsapp: whatsappWithoutSpecialCharacters,
       city,
       state,
     })

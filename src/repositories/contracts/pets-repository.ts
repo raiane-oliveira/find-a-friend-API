@@ -1,9 +1,6 @@
 import { Level, Pet, Prisma, Size } from '@prisma/client'
 
-type _OmitOrganizationFromPetCreateInput = Omit<
-  Prisma.PetCreateInput,
-  'organization'
->
+type _OmitOrganizationFromPetCreateInput = Omit<Prisma.PetCreateInput, 'org'>
 type _OmitImageFromPetCreateInput = Omit<
   _OmitOrganizationFromPetCreateInput,
   'Image'

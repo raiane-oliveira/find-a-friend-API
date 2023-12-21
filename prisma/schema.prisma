@@ -10,20 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Organization {
+model Org {
   id            String   @id @default(uuid())
   name          String
   email         String   @unique
   password_hash String
-  cep           Int
+  cep           String
   address       String
   city          String
   state         String
-  whatsapp      Int
+  whatsapp      String
   created_at    DateTime @default(now())
   Pet           Pet[]
 
-  @@map("organizations")
+  @@map("orgs")
 }
 
 enum Size {
@@ -54,8 +54,8 @@ model Pet {
   created_at        DateTime  @default(now())
   adopted_at        DateTime?
 
-  org_id       String
-  organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  org_id String
+  org    Org    @relation(fields: [org_id], references: [id], onDelete: Cascade)
 
   Image               Image[]
   AdoptionRequirement AdoptionRequirement[]

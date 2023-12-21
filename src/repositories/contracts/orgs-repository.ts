@@ -1,6 +1,6 @@
-import { Organization, Prisma } from '@prisma/client'
+import { Org, Prisma } from '@prisma/client'
 
 export interface OrgsRepository {
-  create(data: Prisma.OrganizationCreateInput): Promise<Organization>
-  findByEmail(email: string): Promise<Organization | null>
+  create(data: Prisma.OrgCreateInput): Promise<Org>
+  findByEmail(email: string): Promise<Org | null>
 }

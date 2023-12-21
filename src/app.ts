@@ -9,6 +9,8 @@ import cors from '@fastify/cors'
 
 export const app = fastify()
 
+app.register(fastifyCookie)
+
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
   sign: {
@@ -24,7 +26,6 @@ app.register(cors, {
   origin: true,
   credentials: true,
 })
-app.register(fastifyCookie)
 
 app.register(orgsRoutes)
 app.register(petsRoutes)

@@ -9,8 +9,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     email: z.string(),
     password: z.string().min(6),
     address: z.string(),
-    cep: z.coerce.number(),
-    whatsapp: z.number(),
+    cep: z.string(),
+    whatsapp: z.string(),
     city: z.string(),
     state: z.string(),
   })
@@ -36,7 +36,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       return reply.status(409).send({ message: err.message })
     }
 
-    throw err
+    return reply.status(500).send()
   }
 
   return reply.status(201).send()
