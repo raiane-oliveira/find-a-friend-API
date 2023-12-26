@@ -1,5 +1,6 @@
 import { makeCreatePetUseCase } from '@/use-cases/@factories/pets/make-create-pet-use-case'
 import { InvalidPetEnergyError } from '@/use-cases/errors/invalid-pet-energy-error'
+import { Level, Size } from '@prisma/client'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -8,9 +9,9 @@ export async function createPet(request: FastifyRequest, reply: FastifyReply) {
     name: z.string(),
     about: z.string(),
     age: z.coerce.number(),
-    size: z.enum(['XS', 'S', 'M', 'L', 'XL']),
-    independence: z.enum(['LOW', 'MEDIUM', 'HIGH']),
-    environment: z.enum(['LOW', 'MEDIUM', 'HIGH']),
+    size: z.nativeEnum(Size),
+    independence: z.nativeEnum(Level),
+    environment: z.nativeEnum(Level),
     energy: z.coerce.number().min(1).max(5),
     city: z.string(),
     state: z.string(),

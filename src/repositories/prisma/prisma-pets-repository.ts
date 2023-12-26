@@ -39,7 +39,7 @@ export class PrismaPetsRepository implements PetsRepository {
       where: {
         city: filters.city,
         age: filters.age,
-        energy: filters.age,
+        energy: filters.energy,
         independent_level: filters.independence,
         size: filters.size,
       },

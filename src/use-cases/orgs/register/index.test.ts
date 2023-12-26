@@ -44,6 +44,21 @@ describe('Register Use Case', () => {
     expect(isPasswordCorrectlyHashed).toBe(true)
   })
 
+  it('should be able to remove non-digits characters from number', async () => {
+    const { org } = await sut.execute({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+      address: 'Rua do Limoeiro, 453, PB - Campina Grande',
+      cep: '123456',
+      whatsapp: '(21) 9 8434-2375',
+      city: 'Teste',
+      state: 'Case',
+    })
+
+    expect(org.whatsapp).toEqual('21984342375')
+  })
+
   it('should not be able to register with same email twice', async () => {
     await sut.execute({
       name: 'John Doe',

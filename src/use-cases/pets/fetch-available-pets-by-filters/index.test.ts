@@ -132,7 +132,7 @@ describe('Fetch Available Pets By City Use Case', () => {
       id: 'pet-02',
       name: 'Alfredo',
       about: 'Lorem ipsum',
-      age: 1,
+      age: 0,
       energy: 5,
       environment: 'HIGH',
       independent_level: 'MEDIUM',
@@ -144,11 +144,8 @@ describe('Fetch Available Pets By City Use Case', () => {
 
     const { pets } = await sut.execute({ city: 'Campina Grande', age: 1 })
 
-    expect(pets).toHaveLength(2)
-    expect(pets).toEqual([
-      expect.objectContaining({ id: 'pet-01' }),
-      expect.objectContaining({ id: 'pet-02' }),
-    ])
+    expect(pets).toHaveLength(1)
+    expect(pets).toEqual([expect.objectContaining({ id: 'pet-01' })])
   })
 
   it('should be able to fetch pets by energy, size and independence', async () => {

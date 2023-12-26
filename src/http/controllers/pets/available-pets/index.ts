@@ -1,6 +1,6 @@
 import { makeFetchAvailablePetsByFiltersUseCase } from '@/use-cases/@factories/pets/make-fetch-available-pets-by-filters-use-case'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
-import { Level } from '@prisma/client'
+import { Level, Size } from '@prisma/client'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -10,12 +10,16 @@ export async function availablePets(
 ) {
   const availablePetsQuerySchema = z.object({
     city: z.string(),
-    age: z.coerce.number().refine((value) => !value || value),
-    energy: z.coerce.number().refine((value) => !value || value),
+    age: z.coerce.number().optional(),
+    energy: z.coerce.number().max(5).optional(),
     size: z
-      .enum(['XS', 'L', 'M', 'S', 'XL'])
-      .refine((value) => !value || value),
-    independence: z.nativeEnum(Level).refine((value) => !value || value),
+      .nativeEnum(Size)
+      .transform((value) => value?.toUpperCase() as Size)
+      .optional(),
+    independence: z
+      .nativeEnum(Level)
+      .transform((value) => value?.toUpperCase() as Level)
+      .optional(),
   })
 
   const { city, age, energy, size, independence } =

@@ -12,11 +12,9 @@
 - [x] Para listar os pets, obrigatoriamente precisamos informar a cidade
 - [x] Uma ORG precisa ter um endereço e um número de WhatsApp
 - [x] Um pet deve estar ligado a uma ORG
-- [ ] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp
+- [x] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp
 - [x] Todos os filtros, além da cidade, são opcionais
-- [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
+- [x] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
 
 # Requisitos não funcionais
 
-- [ ] A idade do pet armazenada no DB deve ser: 
-  0 até 1 = filhote; 1 à 6 = adulto jovem; 7 à 10 = adulto maduro; acima de 10 = Sênior 

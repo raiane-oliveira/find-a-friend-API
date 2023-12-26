@@ -9,7 +9,7 @@ export async function uploadImage(
 ) {
   const uploadImageBodySchema = z.object({
     url: z.string().url(),
-    alt: z.string().refine((value) => !value || value),
+    alt: z.string().optional(),
   })
 
   const uploadImageParamsSchema = z.object({
