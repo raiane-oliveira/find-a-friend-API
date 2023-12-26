@@ -27,9 +27,11 @@ describe('Adopt Use Case', () => {
       age: 0,
       energy: 5,
       environment: 'HIGH',
-      independent_level: 'MEDIUM',
+      independence: 'MEDIUM',
       size: 'XS',
       org_id: 'org-01',
+      city: 'Hello',
+      state: 'JS',
     })
 
     const { pet } = await sut.execute({ petId: 'pet-01' })

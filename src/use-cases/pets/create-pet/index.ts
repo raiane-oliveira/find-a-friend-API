@@ -43,7 +43,7 @@ export class CreatePetUseCase {
       environment,
       city,
       state,
-      independent_level: independentLevel,
+      independence: independentLevel,
       org_id: orgId,
     })
 
