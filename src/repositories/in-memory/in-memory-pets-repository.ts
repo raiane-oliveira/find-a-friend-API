@@ -52,7 +52,7 @@ export class InMemoryPetsRepository implements PetsRepository {
       const filterByEnergy = energy ? item.energy === energy : true
       const filterBySize = size ? item.size === size : true
       const filterByIndependence = independence
-        ? item.independent_level === independence
+        ? item.independence === independence
         : true
 
       return (

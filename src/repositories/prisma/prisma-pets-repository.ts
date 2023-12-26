@@ -40,7 +40,7 @@ export class PrismaPetsRepository implements PetsRepository {
         city: filters.city,
         age: filters.age,
         energy: filters.energy,
-        independent_level: filters.independence,
+        independence: filters.independence,
         size: filters.size,
       },
     })

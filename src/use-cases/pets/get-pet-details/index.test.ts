@@ -30,7 +30,7 @@ describe('Get Pet Details Use Case', () => {
       age: 0,
       energy: 5,
       environment: 'HIGH',
-      independent_level: 'MEDIUM',
+      independence: 'MEDIUM',
       size: 'XS',
       org_id: 'org-01',
       city: 'Lorem',

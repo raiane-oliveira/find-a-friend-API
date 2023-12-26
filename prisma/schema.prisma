@@ -41,18 +41,18 @@ enum Level {
 }
 
 model Pet {
-  id                String    @id @default(uuid())
-  name              String
-  about             String
-  age               Int
-  size              Size
-  city              String
-  state             String
-  energy            Int
-  independent_level Level
-  environment       Level
-  created_at        DateTime  @default(now())
-  adopted_at        DateTime?
+  id           String    @id @default(uuid())
+  name         String
+  about        String
+  age          Int
+  size         Size
+  city         String
+  state        String
+  energy       Int
+  independence Level
+  environment  Level
+  created_at   DateTime  @default(now())
+  adopted_at   DateTime?
 
   org_id String
   org    Org    @relation(fields: [org_id], references: [id], onDelete: Cascade)
