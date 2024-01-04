@@ -43,7 +43,7 @@ export class InMemoryPetsRepository implements PetsRepository {
   }
 
   async findManyByFilters({ city, age, energy, independence, size }: Filters) {
-    const pets = this.items.filter((item) => {
+    const petsAvailable = this.items.filter((item) => {
       const filterByCity =
         item.city.toLowerCase().trim() === city.toLowerCase().trim() &&
         !item.adopted_at
@@ -64,9 +64,15 @@ export class InMemoryPetsRepository implements PetsRepository {
       )
     })
 
-    if (pets.length === 0) {
+    if (petsAvailable.length === 0) {
       return null
     }
+
+    const pets = petsAvailable.map((pet) => ({
+      ...pet,
+      Image: [],
+      AdoptionRequirement: [],
+    }))
 
     return pets
   }

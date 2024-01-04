@@ -25,6 +25,13 @@ export async function refreshAuth(
     },
   )
 
+  reply.setCookie('accessToken', accessToken, {
+    path: '/',
+    httpOnly: true,
+    secure: true,
+    sameSite: true,
+  })
+
   return reply
     .setCookie('refreshToken', refreshToken, {
       path: '/',
@@ -33,5 +40,4 @@ export async function refreshAuth(
       sameSite: true,
     })
     .status(200)
-    .send({ token: accessToken })
 }

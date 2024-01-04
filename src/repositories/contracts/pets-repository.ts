@@ -1,4 +1,11 @@
-import { Level, Pet, Prisma, Size } from '@prisma/client'
+import {
+  AdoptionRequirement,
+  Image,
+  Level,
+  Pet,
+  Prisma,
+  Size,
+} from '@prisma/client'
 
 type _OmitOrganizationFromPetCreateInput = Omit<Prisma.PetCreateInput, 'org'>
 type _OmitImageFromPetCreateInput = Omit<
@@ -19,9 +26,16 @@ export interface Filters {
   independence?: Level
 }
 
+interface PetWithImagesAndRequirements extends Pet {
+  Image: Image[]
+  AdoptionRequirement: AdoptionRequirement[]
+}
+
 export interface PetsRepository {
   create(data: PetCreateInput): Promise<Pet>
   save(pet: Pet): Promise<PetCreateInput>
   findById(id: string): Promise<Pet | null>
-  findManyByFilters(filters: Filters): Promise<Pet[] | null>
+  findManyByFilters(
+    filters: Filters,
+  ): Promise<PetWithImagesAndRequirements[] | null>
 }

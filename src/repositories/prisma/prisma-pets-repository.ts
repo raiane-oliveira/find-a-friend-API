@@ -43,6 +43,10 @@ export class PrismaPetsRepository implements PetsRepository {
         independence: filters.independence,
         size: filters.size,
       },
+      include: {
+        Image: true,
+        AdoptionRequirement: true,
+      },
     })
 
     return pets
