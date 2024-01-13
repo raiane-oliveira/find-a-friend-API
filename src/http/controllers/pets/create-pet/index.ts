@@ -23,13 +23,15 @@ export async function createPet(request: FastifyRequest, reply: FastifyReply) {
     const createPetUseCase = makeCreatePetUseCase()
     const orgId = request.user.sub
 
-    await createPetUseCase.execute({
+    const { pet } = await createPetUseCase.execute({
       ...petData,
       independentLevel: independence,
       orgId,
     })
 
-    return reply.status(201).send()
+    return reply.status(201).send({
+      petId: pet.id,
+    })
   } catch (err) {
     if (err instanceof InvalidPetEnergyError) {
       return reply.status(400).send({ message: err.message })

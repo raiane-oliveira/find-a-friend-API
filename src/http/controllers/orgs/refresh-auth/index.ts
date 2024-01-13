@@ -25,12 +25,12 @@ export async function refreshAuth(
     },
   )
 
-  reply.setCookie('accessToken', accessToken, {
-    path: '/',
-    httpOnly: true,
-    secure: true,
-    sameSite: true,
-  })
+  // reply.setCookie('accessToken', accessToken, {
+  //   path: '/',
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: true,
+  // })
 
   return reply
     .setCookie('refreshToken', refreshToken, {
@@ -40,4 +40,8 @@ export async function refreshAuth(
       sameSite: true,
     })
     .status(200)
+    .send({
+      token: accessToken,
+      orgId: request.user.sub,
+    })
 }
